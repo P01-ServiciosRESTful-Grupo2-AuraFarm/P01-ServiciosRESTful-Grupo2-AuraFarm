@@ -69,7 +69,7 @@ Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dif
 🐺 Dailos Hernández Reyes(Líder) — Arquitecto del Core, Algoritmo 1v1 y Escudo Anti-500
 
 
-🗡️ Daniel — Señor de las Jornadas e Inscripciones
+🗡️ Daniel González Álvarez — Señor de las Jornadas e Inscripciones
 
 
 🛡️ [Compañero 2] — Guardián del RGPD y Usuarios
