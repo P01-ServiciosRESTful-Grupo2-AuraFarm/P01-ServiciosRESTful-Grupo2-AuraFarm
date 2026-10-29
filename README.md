@@ -113,19 +113,11 @@ Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dif
 ##  👑 El Consejo del Aura (Grupo 2)
 
 
-🐺 Dailos Hernández Reyes(Líder) — Arquitecto del Core, Algoritmo 1v1 y Escudo Anti-500
-
-
-🗡️ Daniel González Álvarez — Señor de las Jornadas e Inscripciones
-
-
-🛡️ [Compañero 2] — Guardián del RGPD y Usuarios
-
-
-📰 [Compañero 3] — Heraldo de Noticias y Ranking
-
-
-🎨 [Compañero 4] — Maestro del Frontend y Empaquetado Final
+👑 **Dailos Hernández Reyes (Líder)** — $\color{orange}{\text{Soberano del Core, Creador del Motor 1v1 y Escudo Anti-500}}$  
+🗡️ **Daniel González Álvarez** — $\color{yellow}{\text{Estratega de Entidades, Maestro de i18n y Forjador del Diagrama UML}}$  
+🛡️ **[Compañero 2]** — $\color{red}{\text{Señor de las Jornadas, Control de Aforo e Inscripciones}}$  
+🔑 **[Compañero 3]** — $\color{green}{\text{Centinela de Identidades, Guardián Búnker del RGPD y Roles}}$  
+📰 **[Compañero 4]** — $\color{cyan}{\text{Heraldo de Noticias, Registro de Resultados y Cronista del Ranking}}$
 
 
 <img width="284" height="480" alt="67GIF" src="https://github.com/user-attachments/assets/f2ca8add-655e-4d6c-b887-01370f983999" />
