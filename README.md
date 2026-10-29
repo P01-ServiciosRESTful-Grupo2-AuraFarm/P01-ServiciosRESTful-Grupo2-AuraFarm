@@ -24,6 +24,34 @@ Para levantar la base de datos sin instalar PostgreSQL en local, ejecuta en la r
 docker compose up -d
 ````
 
+#### 🛠️ Conexión desde un cliente de base de datos (DBeaver / pgAdmin)
+Para inspeccionar la base de datos visualmente sin usar la consola:
+
+
+Abre DBeaver (o pgAdmin) y selecciona crear una nueva conexión de tipo PostgreSQL.
+
+
+Usa los siguientes datos de acceso (definidos en docker-compose.yml):
+
+
+Host: localhost
+
+
+Puerto: 5432
+
+
+Base de datos: aurafarm_db
+
+
+Usuario: postgres
+
+
+Contraseña: aurafarmer
+
+
+💡 Nota: Asegúrate de que el contenedor esté corriendo (docker compose up -d) antes de intentar probar la conexión en DBeaver.
+
+
 ### Opción B: PostgreSQL Local 🐘
 Crea una base de datos vacía llamada aurafarm_db en PostgreSQL.
 
