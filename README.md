@@ -57,7 +57,7 @@ En AuraFarm apostamos por un flujo de datos determinista, rápido y sin lógica 
 Filosofía del sistema: Si un DTO no cumple el estándar exacto al cruzar la puerta de la API, la petición se corta al instante con un estado HTTP quirúrgico.
 
 
-###🛡️ El Estándar de Entrada (Validación de DTOs)
+### 🛡️ El Estándar de Entrada (Validación de DTOs)
 
 
 Validación Manual Explícita: Cero excepciones fantasma en la consola. Evaluamos la integridad de los DTOs mediante comprobaciones directas en código antes de tocar la capa de negocio.
@@ -68,15 +68,15 @@ Respuestas Predictivas: Cero trazas de error expuestas. El cliente siempre recib
 
 #### Control Preciso de Estados HTTP:
 
-
-400 Bad Request ➔ DTOs incompletos, tipos de datos erróneos o campos obligatorios vacíos.
-
-
-404 Not Found ➔ Entidades inexistentes en la base de datos de PostgreSQL.
+```diff
+!400 Bad Request ➔ DTOs incompletos, tipos de datos erróneos o campos obligatorios vacíos.
 
 
-200 OK / 201 Created ➔ Flujo de datos verificado y procesado con éxito.
+-404 Not Found ➔ Entidades inexistentes en la base de datos de PostgreSQL.
 
+
++200 OK / 201 Created ➔ Flujo de datos verificado y procesado con éxito.
+````
 
 ### 🏛️ Reglas del Servidor para el Equipo
 
