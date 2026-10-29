@@ -68,15 +68,11 @@ Respuestas Predictivas: Cero trazas de error expuestas. El cliente siempre recib
 
 #### Control Preciso de Estados HTTP:
 
-```diff
-!400 Bad Request ➔ DTOs incompletos, tipos de datos erróneos o campos obligatorios vacíos.
 
+* $\color{orange}{\text{400 Bad Request}}$ ➔ DTOs incompletos, tipos de datos erróneos o campos obligatorios vacíos.
+* $\color{red}{\text{404 Not Found}}$ ➔ Entidades inexistentes en la base de datos de PostgreSQL.
+* $\color{green}{\text{200 OK / 201 Created}}$ ➔ Flujo de datos verificado y procesado con éxito.
 
--404 Not Found ➔ Entidades inexistentes en la base de datos de PostgreSQL.
-
-
-+200 OK / 201 Created ➔ Flujo de datos verificado y procesado con éxito.
-````
 
 ### 🏛️ Reglas del Servidor para el Equipo
 
