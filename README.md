@@ -41,11 +41,11 @@ Arranca el proyecto desde Eclipse. (Spring Boot creará las tablas e insertará 
 *Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dificultades.txt.
 
 👑 El Consejo del Aura (Grupo 2)
-*🐺 Dailos Hernández Reyes(Líder) — Arquitecto del Core, Algoritmo 1v1 y Escudo Anti-500
-*🗡️ [Compañero 1] — Señor de las Jornadas e Inscripciones
-*🛡️ [Compañero 2] — Guardián del RGPD y Usuarios
-*📰 [Compañero 3] — Heraldo de Noticias y Ranking
-*🎨 [Compañero 4] — Maestro del Frontend y Empaquetado Final
+-🐺 Dailos Hernández Reyes(Líder) — Arquitecto del Core, Algoritmo 1v1 y Escudo Anti-500
+-🗡️ [Compañero 1] — Señor de las Jornadas e Inscripciones
+-🛡️ [Compañero 2] — Guardián del RGPD y Usuarios
+-📰 [Compañero 3] — Heraldo de Noticias y Ranking
+-🎨 [Compañero 4] — Maestro del Frontend y Empaquetado Final
 
 <img width="250" height="280" alt="despicablememinionsGIF" src="https://github.com/user-attachments/assets/86860bec-f2fb-4d49-a8a8-a10a21725d60" />
 Enlace al Trello: https://trello.com/invite/b/6ae36e7ab72d2e9cffa6413a/ATTI52ef808d3fcbc9964af8cfd5cb0168233B83590D/organizacion-aurafram 
