@@ -126,7 +126,6 @@ Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dif
 
 <img width="480" height="266" alt="AuraTuffGIF" src="https://github.com/user-attachments/assets/20858bfe-5ea8-46b6-9930-b629c57368c6" />
 
-
 <img width="446" height="480" alt="MewingGIF" src="https://github.com/user-attachments/assets/8d788252-ec3a-4b7a-bfdd-70ab665d6605" />
 
 
