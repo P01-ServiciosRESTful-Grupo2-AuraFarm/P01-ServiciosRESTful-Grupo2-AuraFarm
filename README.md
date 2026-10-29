@@ -30,7 +30,7 @@ Crea una base de datos vacía llamada aurafarm_db en PostgreSQL.
 
 Arranca el proyecto desde Eclipse. (Spring Boot creará las tablas e insertará los datos de prueba automáticamente).
 
-🎯 Endpoints Clave
+##  🎯 Endpoints Clave
 
 
 POST /aurafarm/auth/register — Crea tu cuenta (+100 Aura)
@@ -48,7 +48,7 @@ PUT /aurafarm/admin/jornadas/{id}/cerrar — Generar batallas 1v1 al azar (+1000
 GET /aurafarm/ranking — Ver quién manda en el servidor (🗿 Infinito)
 
 
-📂 Estructura del Entregable PSP
+##  📂 Estructura del Entregable PSP
 
 
 Item1/ — Código fuente completo (mvn clean ejecutado antes de comprimir en .zip).
@@ -63,7 +63,7 @@ Item3/ — Enlace a este repositorio de GitHub con los commits del equipo.
 Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dificultades.txt.
 
 
-👑 El Consejo del Aura (Grupo 2)
+##  👑 El Consejo del Aura (Grupo 2)
 
 
 🐺 Dailos Hernández Reyes(Líder) — Arquitecto del Core, Algoritmo 1v1 y Escudo Anti-500
