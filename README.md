@@ -13,7 +13,7 @@ API RESTful en Spring Boot y PostgreSQL para organizar quedadas, batallas 1v1 al
 * **Java & Spring Boot** ☕
 * **PostgreSQL** 🐘
 * **Maven** 📦
-* **`@RestControllerAdvice`** 🛡️ *(Nuestro escudo sagrado anti-suspenso)*
+
 
 ## 🚀 Despliegue de la Base de Datos (2 Opciones)
 
@@ -46,6 +46,57 @@ PUT /aurafarm/admin/jornadas/{id}/cerrar — Generar batallas 1v1 al azar (+1000
 
 
 GET /aurafarm/ranking — Ver quién manda en el servidor (🗿 Infinito)
+
+
+## ⚡ AuraFarm | Validación Robusta y Flujo de Errores Transparente
+
+
+En AuraFarm apostamos por un flujo de datos determinista, rápido y sin lógica oculta. En lugar de delegar el control a interceptores globales implícitos (@RestControllerAdvice), cada petición se evalúa y filtra directamente en la capa de entrada (@RestController).
+
+
+Filosofía del sistema: Si un DTO no cumple el estándar exacto al cruzar la puerta de la API, la petición se corta al instante con un estado HTTP quirúrgico.
+
+
+###🛡️ El Estándar de Entrada (Validación de DTOs)
+
+
+Validación Manual Explícita: Cero excepciones fantasma en la consola. Evaluamos la integridad de los DTOs mediante comprobaciones directas en código antes de tocar la capa de negocio.
+
+
+Respuestas Predictivas: Cero trazas de error expuestas. El cliente siempre recibe una respuesta JSON estructurada y limpia.
+
+
+#### Control Preciso de Estados HTTP:
+
+
+400 Bad Request ➔ DTOs incompletos, tipos de datos erróneos o campos obligatorios vacíos.
+
+
+404 Not Found ➔ Entidades inexistentes en la base de datos de PostgreSQL.
+
+
+200 OK / 201 Created ➔ Flujo de datos verificado y procesado con éxito.
+
+
+### 🏛️ Reglas del Servidor para el Equipo
+
+
+Patrón Guardián: Ninguna lógica de la capa @Service se ejecuta si el DTO no ha pasado el filtro previo en el Controller.
+
+
+Corte Inmediato: Si un campo falla, el controlador interrumpe la ejecución e informa inmediatamente con un ResponseEntity.badRequest().
+
+
+Contrato de Error Único: Todos los fallos de la API responden bajo la misma estructura:
+
+
+````JSON
+{
+  "estado": 400,
+  "error": "Petición Incorrecta",
+  "mensaje": "El campo 'email' es obligatorio y debe tener un formato válido."
+}
+````
 
 
 ##  📂 Estructura del Entregable PSP
