@@ -14,16 +14,19 @@ API RESTful en Spring Boot y PostgreSQL para organizar quedadas, batallas 1v1 al
 * **Maven** 📦
 * **`@RestControllerAdvice`** 🛡️ *(Nuestro escudo sagrado anti-suspenso)*
 
----
+## 🚀 Despliegue de la Base de Datos (2 Opciones)
 
-## 🚀 Configuración en 5 segundos (`application.properties`)
+### Opción A: Con Docker Compose 🐳 (Recomendada)
+Para levantar la base de datos sin instalar PostgreSQL en local, ejecuta en la raíz del proyecto:
 
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/aurafarm_db
-spring.datasource.username=postgres
-spring.datasource.password=aurafarmer
-spring.jpa.hibernate.ddl-auto=update
+```bash
+docker compose up -d
 ````
+
+### Opción B: PostgreSQL Local 🐘
+Crea una base de datos vacía llamada aurafarm_db en PostgreSQL.
+Arranca el proyecto desde Eclipse. (Spring Boot creará las tablas e insertará los datos de prueba automáticamente).
+
 🎯 Endpoints Clave
 POST /aurafarm/auth/register — Crea tu cuenta (+100 Aura)
 GET /aurafarm/jornadas — Ver las quedadas para farmear (+50 Aura)
