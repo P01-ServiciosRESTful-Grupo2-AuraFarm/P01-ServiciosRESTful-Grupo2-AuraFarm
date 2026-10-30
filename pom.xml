@@ -79,6 +79,11 @@
 			<artifactId>proyecto</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>aurafarm</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
