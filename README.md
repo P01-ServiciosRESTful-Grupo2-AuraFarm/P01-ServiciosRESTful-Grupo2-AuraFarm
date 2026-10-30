@@ -154,7 +154,7 @@ Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dif
 
 <img width="250" height="280" alt="despicablememinionsGIF" src="https://github.com/user-attachments/assets/86860bec-f2fb-4d49-a8a8-a10a21725d60" />
 
-<img width="8000" height="500" alt="AuraTuffGIF" src="https://github.com/user-attachments/assets/20858bfe-5ea8-46b6-9930-b629c57368c6" />
+<img width="800" height="600" alt="AuraTuffGIF" src="https://github.com/user-attachments/assets/20858bfe-5ea8-46b6-9930-b629c57368c6" />
 
 
 Enlace al Trello: https://trello.com/invite/b/6ae36e7ab72d2e9cffa6413a/ATTI52ef808d3fcbc9964af8cfd5cb0168233B83590D/organizacion-aurafram 
