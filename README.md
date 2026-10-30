@@ -143,7 +143,7 @@ Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dif
 
 👑 **Dailos Hernández Reyes (Líder)** — $\color{orange}{\text{Soberano del Core, Creador del Motor 1v1 y Escudo Anti-500}}$  
 🗡️ **Daniel González Álvarez** — $\color{yellow}{\text{Estratega de Entidades, Maestro de i18n y Forjador del Diagrama UML}}$  
-🛡️ **[Compañero 2]** — $\color{red}{\text{Señor de las Jornadas, Control de Aforo e Inscripciones}}$  
+🛡️ **Miguel Ángel González Ortega** — $\color{red}{\text{Señor de las Jornadas, Control de Aforo e Inscripciones}}$  
 🔑 **[Compañero 3]** — $\color{green}{\text{Centinela de Identidades, Guardián Búnker del RGPD y Roles}}$  
 📰 **[Compañero 4]** — $\color{cyan}{\text{Heraldo de Noticias, Registro de Resultados y Cronista del Ranking}}$
 
