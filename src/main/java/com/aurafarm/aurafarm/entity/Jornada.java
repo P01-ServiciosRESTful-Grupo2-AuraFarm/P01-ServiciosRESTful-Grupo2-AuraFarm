@@ -26,11 +26,11 @@ public class Jornada extends DomainEntity{
 	private TipoPlazo plazo;
 	
 	@OneToMany
-	private List<Enfretamiento> enfrentamientos;
+	private List<Enfrentamiento> enfrentamientos;
 
 	public Jornada(@NotBlank String nombre, @NotBlank String descripcion, @NotBlank LocalDate fecha,
 			@NotBlank LocalTime horaInicio, @NotBlank LocalTime horaFin, @NotBlank @Min(2) int maxInscripciones,
-			@NotBlank TipoPlazo plazo, List<Enfretamiento> enfrentamientos) {
+			@NotBlank TipoPlazo plazo, List<Enfrentamiento> enfrentamientos) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -98,11 +98,11 @@ public class Jornada extends DomainEntity{
 		this.plazo = plazo;
 	}
 
-	public List<Enfretamiento> getEnfrentamientos() {
+	public List<Enfrentamiento> getEnfrentamientos() {
 		return enfrentamientos;
 	}
 
-	public void setEnfrentamientos(List<Enfretamiento> enfrentamientos) {
+	public void setEnfrentamientos(List<Enfrentamiento> enfrentamientos) {
 		this.enfrentamientos = enfrentamientos;
 	}
 	
