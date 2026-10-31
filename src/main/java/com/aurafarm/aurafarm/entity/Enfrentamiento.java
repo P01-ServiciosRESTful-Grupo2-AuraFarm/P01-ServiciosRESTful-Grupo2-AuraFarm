@@ -1,7 +1,9 @@
 package com.aurafarm.aurafarm.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
 
+@Entity
 public class Enfrentamiento extends DomainEntity {
 	@NotBlank
 	private TipoEstado estado;
