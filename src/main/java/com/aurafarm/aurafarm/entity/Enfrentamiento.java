@@ -8,6 +8,11 @@ public class Enfrentamiento extends DomainEntity {
 	@NotBlank
 	private TipoEstado estado;
 
+	
+	public Enfrentamiento() {
+		super();
+	}
+
 	public Enfrentamiento(@NotBlank TipoEstado estado) {
 		this.estado = estado;
 	}

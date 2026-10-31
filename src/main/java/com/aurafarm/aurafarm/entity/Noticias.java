@@ -28,6 +28,13 @@ public class Noticias extends DomainEntity{
 	}
 	
 	
+	public Noticias() {
+		super();
+	}
+
+
+
+
 	public String getTitulo() {
 		return titulo;
 	}

@@ -43,6 +43,15 @@ public class Jornada extends DomainEntity{
 		this.plazo = plazo;
 		this.enfrentamientos = enfrentamientos;
 	}
+	
+	
+
+	public Jornada() {
+		super();
+	}
+
+
+
 
 	public String getNombre() {
 		return nombre;
