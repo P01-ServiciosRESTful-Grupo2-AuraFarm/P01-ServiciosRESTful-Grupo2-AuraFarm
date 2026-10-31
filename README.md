@@ -138,14 +138,14 @@ Item3/ — Enlace a este repositorio de GitHub con los commits del equipo.
 Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dificultades.txt.
 
 
-##  👑 El Consejo del Aura (Grupo 2)
+##  👑 $\color{purple}{\text{La Élite de AuraFarm: \Vert{ Los Guardianes del Core (Grupo 2)} }}$
 
 
-👑 **Dailos Hernández Reyes (Líder)** — $\color{orange}{\text{Soberano del Core, Creador del Motor 1v1 y Escudo Anti-500}}$  
-🗡️ **Daniel González Álvarez** — $\color{yellow}{\text{Estratega de Entidades, Maestro de i18n y Forjador del Diagrama UML}}$  
-🛡️ **Miguel Ángel González Ortega** — $\color{red}{\text{Señor de las Jornadas, Control de Aforo e Inscripciones}}$  
-🔑 **[Compañero 3]** — $\color{green}{\text{Centinela de Identidades, Guardián Búnker del RGPD y Roles}}$  
-📰 **[Compañero 4]** — $\color{cyan}{\text{Heraldo de Noticias, Registro de Resultados y Cronista del Ranking}}$
+👑 **Dailos Hernández Reyes (Líder)** — $\color{orange}{\text{Soberano del Proyecto, Gestor de Entregables y Maestro de Inscripciones}}$
+🗡️ **Daniel González Álvarez** — $\color{yellow}{\text{Forjador del Diagrama UML y Dominador de las Jornadas}}$
+🛡️ **Miguel Ángel González Ortega** — $\color{red}{\text{Centinela de Identidades, Guardián de Actores y Custodio de Roles}}$
+🔑 **Juan Antonio Leiva Chiva** — $\color{green}{\text{Señor del Algoritmo 1v1, Motor de Enfrentamientos y Juez de Victorias}}$  
+📰 **Juan José Tejero Castro** — $\color{cyan}{\text{Heraldo de Noticias y Cronista del Ranking Supremo}}$
 
 
 <img width="284" height="480" alt="67GIF" src="https://github.com/user-attachments/assets/f2ca8add-655e-4d6c-b887-01370f983999" />
