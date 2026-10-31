@@ -8,9 +8,6 @@ import com.aurafarm.aurafarm.service.NoticiasService;
 
 @RestController
 public class NoticiasController {
-	@Autowired
-	private NoticiasService noticiasService;
-	
 	
 
 }
