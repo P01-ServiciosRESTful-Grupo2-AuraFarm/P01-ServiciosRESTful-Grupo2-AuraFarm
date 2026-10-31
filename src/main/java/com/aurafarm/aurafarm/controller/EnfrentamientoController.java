@@ -8,10 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aurafarm.aurafarm.entity.Enfrentamiento;
+import com.aurafarm.aurafarm.entity.Usuario;
 import com.aurafarm.aurafarm.service.EnfrentamientoService;
 import com.aurafarm.aurafarm.service.JornadaService;
 
@@ -49,6 +51,32 @@ public class EnfrentamientoController {
 			return ResponseEntity.ok(enfrentamiento.get());
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+	}
+	
+	@GetMapping("/{id}/participantes")
+	@Operation(summary = "Listar los participantes de un enfrentamiento")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Lista obtenida") })
+	public ResponseEntity<List<Usuario>> getParticipantes(@PathVariable int id) {
+		return ResponseEntity.ok(enfrentamientoService.getParticipantes(id));
+	}
+	
+	@PutMapping("/{id}/resultado/{ganadorId}")
+	@Operation(summary = "Registrar el resultado de un enfrentamiento")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Resultado registrado correctamente"),
+			@ApiResponse(responseCode = "400", description = "Enfrentamiento no pendiente o ganador no válido"),
+			@ApiResponse(responseCode = "404", description = "Enfrentamiento no encontrado") })
+	public ResponseEntity<String> registrarResultado(@PathVariable int id, @PathVariable int ganadorId) {
+		try {
+			Enfrentamiento response = enfrentamientoService.registrarResultado(id, ganadorId);
+			if (response != null) {
+				return ResponseEntity.status(HttpStatus.OK).body("Resultado registrado correctamente");
+			} else {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Enfrentamiento no encontrado");
+			}
+		} catch (IllegalArgumentException ex) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
 		}
 	}
 }
