@@ -104,4 +104,8 @@ public class UsuarioService {
 		}
 		return res;
 	}
+	
+	public Optional<List<Integer>> findByEnfrentamientosGanadosRanking(){
+		return usuarioRepository.findByEnfrentamientosGanadosRanking();
+	}
 }

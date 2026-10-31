@@ -13,7 +13,5 @@ import java.util.Optional;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	@Query("SELECT a.victorias FROM Usuario ORDER BY desc")
-	public Optional<List<Integer>> findByEnfrentamientosGanados();
-	
-
+	public Optional<List<Integer>> findByEnfrentamientosGanadosRanking();D
 }
