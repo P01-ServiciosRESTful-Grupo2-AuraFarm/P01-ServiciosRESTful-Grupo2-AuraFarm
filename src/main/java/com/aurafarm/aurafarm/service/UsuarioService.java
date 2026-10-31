@@ -99,4 +99,17 @@ public class UsuarioService {
 		}
 		return res;
 	}
+
+	public List<Usuario> getInscritosByJornada(int jornadaId) {
+		return usuarioRepository.encontrarInscritosPorJornada(jornadaId);
+	}
+
+	public List<Usuario> getParticipantesByEnfrentamiento(int enfrentamientoId) {
+		return usuarioRepository.encontrarParticipantes(enfrentamientoId);
+	}
+
+	@Transactional
+	public Usuario save(Usuario usuario) {
+		return usuarioRepository.save(usuario);
+	}
 }
