@@ -61,66 +61,58 @@ Arranca el proyecto desde Eclipse. (Spring Boot creará las tablas e insertará 
 ##  🎯 Endpoints Clave
 
 
-POST /aurafarm/auth/register — Crea tu cuenta (+100 Aura)
+POST /aurafarm/register — Crea tu cuenta (+100 Aura)
 
 
 GET /aurafarm/jornadas — Ver las quedadas para farmear (+50 Aura)
 
 
-POST /aurafarm/admin/jornadas — Crear jornada (plazas pares obligatorias) (+500 Aura)
+POST /aurafarm/jornadas/{id} — Crear jornada (plazas pares obligatorias) (+500 Aura)
 
 
-PUT /aurafarm/admin/jornadas/{id}/cerrar — Generar batallas 1v1 al azar (+1000 Aura)
+PUT /aurafarm/jornadas/{id}/cambiar-plazo — Generar batallas 1v1 al azar (+1000 Aura)
 
 
-GET /aurafarm/ranking — Ver quién manda en el servidor (🗿 Infinito)
+GET /aurafarm/users/ranking — Ver quién manda en el servidor (🗿 Infinito)
 
 
 ## ⚡ AuraFarm | Validación Robusta y Flujo de Errores Transparente
 
 
-En AuraFarm apostamos por un flujo de datos determinista, rápido y sin lógica oculta. En lugar de delegar el control a interceptores globales implícitos (@RestControllerAdvice), cada petición se evalúa y filtra directamente en la capa de entrada (@RestController).
+En AuraFarm no hay sitio para el azar ni para la magia negra. Ejecutamos una arquitectura directa, quirúrgica y de rendimiento puro. Cero interceptores globales opacos (@RestControllerAdvice) resolviendo desastres en la sombra: la validez de cada petición se audita en la línea de fuego, directamente en el @RestController.
 
 
-Filosofía del sistema: Si un DTO no cumple el estándar exacto al cruzar la puerta de la API, la petición se corta al instante con un estado HTTP quirúrgico.
+La Ley del Dominio: Si los datos de entrada no demuestran una integridad absoluta al cruzar el umbral del sistema, la ejecución se cercena al instante con la precisión quirúrgica de un estado HTTP imperturbable.
 
 
-### 🛡️ El Estándar de Entrada (Validación de DTOs)
+## 🛡️ El Estándar de Entrada (Escudo Anti-500)Validación Manual Explícita: Cero excepciones fantasma en la consola. 
 
 
-Validación Manual Explícita: Cero excepciones fantasma en la consola. Evaluamos la integridad de los DTOs mediante comprobaciones directas en código antes de tocar la capa de negocio.
+Validación Manual Explícita: Cero excepciones fantasma en la consola. Evaluamos la integridad de los datos de entrada mediante comprobaciones directas con sentencias if en el controlador antes de tocar la capa de negocio o la base de datos.
 
 
-Respuestas Predictivas: Cero trazas de error expuestas. El cliente siempre recibe una respuesta JSON estructurada y limpia.
+Respuestas Predictivas: Cero trazas de error expuestas. El cliente siempre recibe una respuesta ResponseEntity estructurada y limpia.
 
 
-#### Control Preciso de Estados HTTP:
+⚔️Control Preciso de Estados HTTP:
 
 
-* $\color{orange}{\text{400 Bad Request}}$ ➔ DTOs incompletos, tipos de datos erróneos o campos obligatorios vacíos.
-* $\color{red}{\text{404 Not Found}}$ ➔ Entidades inexistentes en la base de datos de PostgreSQL.
-* $\color{green}{\text{200 OK / 201 Created}}$ ➔ Flujo de datos verificado y procesado con éxito.
+$\color{orange}{\text{400 Bad Request}}$ ➔ Peticiones incompletas, datos de entrada erróneos o campos obligatorios vacíos.
+
+
+$\color{red}{\text{404 Not Found}}$ ➔ Entidades inexistentes en la base de datos de PostgreSQL.
+
+
+$\color{green}{\text{200 OK / 201 Created}}$ ➔ Flujo de datos verificado y procesado con éxito.
 
 
 ### 🏛️ Reglas del Servidor para el Equipo
 
 
-Patrón Guardián: Ninguna lógica de la capa @Service se ejecuta si el DTO no ha pasado el filtro previo en el Controller.
+Patrón Guardián: Ninguna lógica de la capa @Service se ejecuta si la petición no ha pasado el filtro previo en el Controller.
 
 
 Corte Inmediato: Si un campo falla, el controlador interrumpe la ejecución e informa inmediatamente con un ResponseEntity.badRequest().
-
-
-Contrato de Error Único: Todos los fallos de la API responden bajo la misma estructura:
-
-
-````JSON
-{
-  "estado": 400,
-  "error": "Petición Incorrecta",
-  "mensaje": "El campo 'email' es obligatorio y debe tener un formato válido."
-}
-````
 
 
 ##  📂 Estructura del Entregable PSP
