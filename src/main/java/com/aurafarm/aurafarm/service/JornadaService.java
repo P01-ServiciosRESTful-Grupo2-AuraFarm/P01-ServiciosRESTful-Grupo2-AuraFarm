@@ -1,5 +1,6 @@
 package com.aurafarm.aurafarm.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,11 +15,8 @@ import java.util.Optional;
 @Service
 public class JornadaService {
 
-    private final JornadaRepository jornadaRepository;
-
-    public JornadaService(JornadaRepository jornadaRepository) {
-        this.jornadaRepository = jornadaRepository;
-    }
+	@Autowired
+    private JornadaRepository jornadaRepository;
 
     public List<Jornada> obtenerTodas() {
         return jornadaRepository.findAll();

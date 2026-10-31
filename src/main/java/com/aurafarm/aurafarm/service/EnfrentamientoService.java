@@ -1,5 +1,8 @@
 package com.aurafarm.aurafarm.service;
 
-public class EnfrentamientoService {
+import org.springframework.stereotype.Service;
 
+@Service
+public class EnfrentamientoService {
+	
 }

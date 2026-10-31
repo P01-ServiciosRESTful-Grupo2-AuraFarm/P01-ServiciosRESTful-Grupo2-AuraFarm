@@ -3,6 +3,8 @@ package com.aurafarm.aurafarm.controller;
 import com.aurafarm.aurafarm.entity.Jornada;
 import com.aurafarm.aurafarm.service.JornadaService;
 import jakarta.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +15,8 @@ import java.util.List;
 @RequestMapping("/api/jornadas")
 public class JornadaController {
 
-    private final JornadaService jornadaService;
-
-    public JornadaController(JornadaService jornadaService) {
-        this.jornadaService = jornadaService;
-    }
+	@Autowired
+    private JornadaService jornadaService;
 
     @GetMapping("/publicas")
     public ResponseEntity<List<Jornada>> listarJornadasPublicas() {
