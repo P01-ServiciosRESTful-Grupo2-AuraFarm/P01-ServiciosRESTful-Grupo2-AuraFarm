@@ -6,19 +6,20 @@ import org.hibernate.validator.constraints.URL;
 import jakarta.persistence.Entity;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 @Entity
 public class Noticias extends DomainEntity{
 	@NotBlank
 	private String titulo;
 	@NotBlank
 	private String contenido;
-	@NotBlank
+	@NotNull
 	private LocalDate fechaPublicacion;
 	@URL
 	private String imagen;
 	
 	
-	public Noticias(@NotBlank String titulo, @NotBlank String contenido, @NotBlank LocalDate fechaPublicacion,
+	public Noticias(@NotBlank String titulo, @NotBlank String contenido, @NotNull LocalDate fechaPublicacion,
 			@URL String imagen) {
 		super();
 		this.titulo = titulo;

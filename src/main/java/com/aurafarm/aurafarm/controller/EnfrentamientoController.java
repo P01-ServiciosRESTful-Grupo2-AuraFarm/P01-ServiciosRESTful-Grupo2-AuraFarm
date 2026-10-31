@@ -75,11 +75,16 @@ public class EnfrentamientoController {
             @ApiResponse(responseCode = "200", description = "Resultado registrado correctamente"),
             @ApiResponse(responseCode = "400", description = "Enfrentamiento no pendiente o ganador no válido"),
             @ApiResponse(responseCode = "404", description = "Enfrentamiento no encontrado") })
-    public ResponseEntity<Enfrentamiento> registrarResultado(@PathVariable int id, @PathVariable int ganadorId) {
-        Enfrentamiento actualizado = enfrentamientoService.registrarResultado(id, ganadorId);
-        if (actualizado != null) {
-            return ResponseEntity.ok(actualizado);
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<?> registrarResultado(@PathVariable int id, @PathVariable int ganadorId) {
+    	try {
+    		Enfrentamiento actualizado = enfrentamientoService.registrarResultado(id, ganadorId);
+            if (actualizado != null) {
+                return ResponseEntity.ok(actualizado);
+            }
+            return ResponseEntity.notFound().build();
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+
     }
 }

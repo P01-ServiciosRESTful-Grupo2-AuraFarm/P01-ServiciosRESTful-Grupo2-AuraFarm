@@ -21,5 +21,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	public List<Usuario> encontrarInscritosPorJornada(int jornadaId);
 
 	@Query("SELECT COUNT(u) FROM Usuario u JOIN u.jornadas j WHERE j.id = ?1")
-	public long countByJornadasContaining(Jornada jornada);
+	public long countByJornadasContaining(int idjornada);
 }

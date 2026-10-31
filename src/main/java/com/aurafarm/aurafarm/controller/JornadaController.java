@@ -67,9 +67,12 @@ public class JornadaController {
         @ApiResponse(responseCode = "400", description = "Datos de la jornada no válidos")
     })
     @PostMapping
-    public ResponseEntity<Jornada> crear(@Valid @RequestBody Jornada jornada) {
-        Jornada nuevaJornada = jornadaService.crear(jornada);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevaJornada);
+    public ResponseEntity<?> crear(@Valid @RequestBody Jornada jornada) {
+    	try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(jornadaService.crear(jornada));
+		} catch (IllegalArgumentException e) {
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+		}
     }
 
     @Operation(summary = "Actualizar una jornada", description = "Permite a un administrador modificar los datos de una jornada existente.")
@@ -79,13 +82,16 @@ public class JornadaController {
         @ApiResponse(responseCode = "404", description = "Jornada no encontrada")
     })
     @PutMapping("/{id}")
-    public ResponseEntity<Jornada> actualizar(@PathVariable int id, 
-                                                @Valid @RequestBody Jornada jornada) {
-        Jornada jornadaActualizada = jornadaService.actualizar(id, jornada);
-        if (jornadaActualizada != null) {
-            return ResponseEntity.ok(jornadaActualizada);
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<?> actualizar(@PathVariable int id, @Valid @RequestBody Jornada jornada) {
+    	try {
+    		Jornada jornadaActualizada = jornadaService.actualizar(id, jornada);
+            if (jornadaActualizada != null) {
+                return ResponseEntity.ok(jornadaActualizada);
+            }
+            return ResponseEntity.notFound().build();
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
     }
 
     @Operation(summary = "Eliminar una jornada", description = "Permite a un administrador eliminar una jornada del sistema.")
@@ -96,7 +102,7 @@ public class JornadaController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable int id) {
         if (jornadaService.eliminar(id)) {
-            return ResponseEntity.ok().build();
+            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
     }
@@ -107,12 +113,16 @@ public class JornadaController {
         @ApiResponse(responseCode = "404", description = "Jornada no encontrada")
     })
     @PatchMapping("/{id}/cambiar-plazo")
-    public ResponseEntity<Jornada> cambiarPlazo(@PathVariable int id) {
-        Jornada jornada = jornadaService.cambiarEstadoPlazo(id);
-        if (jornada != null) {
-            return ResponseEntity.ok(jornada);
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<?> cambiarPlazo(@PathVariable int id) {
+    	try {
+            Jornada jornada = jornadaService.cambiarEstadoPlazo(id);
+            if (jornada != null) {
+                return ResponseEntity.ok(jornada);
+            }
+            return ResponseEntity.notFound().build();
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
     }
 
     @PostMapping("/{jornadaId}/inscripcion/{usuarioId}")

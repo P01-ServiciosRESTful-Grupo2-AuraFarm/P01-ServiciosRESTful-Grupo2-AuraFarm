@@ -29,10 +29,9 @@ public class NoticiasService {
 			Noticias noticiasExistente = optNoticias.get();
 			
 			noticiasExistente.setTitulo(noticiaActualizada.getTitulo());
-			noticiasExistente.setVersion(noticiaActualizada.getVersion());
 			noticiasExistente.setImagen(noticiaActualizada.getImagen());
 			noticiasExistente.setContenido(noticiaActualizada.getContenido());
-			noticiasExistente.setImagen(noticiaActualizada.getImagen());
+			noticiasExistente.setFechaPublicacion(noticiaActualizada.getFechaPublicacion());
 			
 			return noticiasRepository.save(noticiasExistente);
 		}else {

@@ -19,6 +19,8 @@ public class JornadaService {
 
 	@Autowired
     private JornadaRepository jornadaRepository;
+	
+	@Autowired
     private UsuarioRepository usuarioRepository;
 	
 	@Autowired
@@ -88,6 +90,10 @@ public class JornadaService {
     public boolean eliminar(int id) {
         Optional<Jornada> optJornada = jornadaRepository.findById(id);
         if (optJornada.isPresent()) {
+        	for (Usuario u : usuarioRepository.encontrarInscritosPorJornada(id)) {
+				u.getJornadas().remove(optJornada.get());
+				usuarioRepository.save(u);
+			}
             jornadaRepository.deleteById(id);
             return true;
         }
@@ -129,7 +135,7 @@ public class JornadaService {
             throw new IllegalStateException("El usuario ya se encuentra inscrito en esta jornada.");
         }
 
-        long inscritosActuales = usuarioRepository.countByJornadasContaining(jornada);
+        long inscritosActuales = usuarioRepository.countByJornadasContaining(jornada.getId());
         if (inscritosActuales >= jornada.getMaxInscripciones()) {
             throw new IllegalStateException("No hay plazas disponibles en esta jornada.");
         }

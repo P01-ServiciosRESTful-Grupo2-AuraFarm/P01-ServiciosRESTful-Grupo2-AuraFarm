@@ -4,10 +4,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Jornada extends DomainEntity{
@@ -15,24 +18,26 @@ public class Jornada extends DomainEntity{
 	private String nombre;
 	@NotBlank
 	private String descripcion;
-	@NotBlank
+	@NotNull
 	private LocalDate fecha;
-	@NotBlank
+	@NotNull
+	@JsonFormat(pattern = "HH:mm:ss")
 	private LocalTime horaInicio;
-	@NotBlank
+	@NotNull
+	@JsonFormat(pattern = "HH:mm:ss")
 	private LocalTime horaFin;
-	@NotBlank
+	@NotNull
 	@Min(2)
 	private int maxInscripciones;
-	@NotBlank
+	@NotNull
 	private TipoPlazo plazo;
 	
 	@OneToMany
 	private List<Enfrentamiento> enfrentamientos;
 
-	public Jornada(@NotBlank String nombre, @NotBlank String descripcion, @NotBlank LocalDate fecha,
-			@NotBlank LocalTime horaInicio, @NotBlank LocalTime horaFin, @NotBlank @Min(2) int maxInscripciones,
-			@NotBlank TipoPlazo plazo, List<Enfrentamiento> enfrentamientos) {
+	public Jornada(@NotBlank String nombre, @NotBlank String descripcion, @NotNull LocalDate fecha,
+			@NotNull LocalTime horaInicio, @NotNull LocalTime horaFin, @NotNull @Min(2) int maxInscripciones,
+			@NotNull TipoPlazo plazo, List<Enfrentamiento> enfrentamientos) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
