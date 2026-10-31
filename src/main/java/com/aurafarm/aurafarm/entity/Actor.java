@@ -5,8 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL; // O jakarta.validation.constraints.Pattern si no usas Hibernate Validator
-
+import org.hibernate.validator.constraints.URL;
 
 @Entity
 public abstract class Actor extends DomainEntity {

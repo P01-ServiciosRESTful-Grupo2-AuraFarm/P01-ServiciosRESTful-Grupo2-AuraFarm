@@ -1,22 +1,25 @@
 package com.aurafarm.aurafarm.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aurafarm.aurafarm.entity.Jornada;
 import com.aurafarm.aurafarm.entity.TipoPlazo;
+import com.aurafarm.aurafarm.entity.Usuario;
 import com.aurafarm.aurafarm.repository.JornadaRepository;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.aurafarm.aurafarm.repository.UsuarioRepository;
 
 @Service
 public class JornadaService {
 
 	@Autowired
     private JornadaRepository jornadaRepository;
+    private UsuarioRepository usuarioRepository;
 	
 	@Autowired
     private EnfrentamientoService enfrentamientoService;
@@ -110,5 +113,47 @@ public class JornadaService {
         return null;
     }
     
+    @Transactional
+    public Usuario inscribirUsuario(int jornadaId, int usuarioId) {
+        Jornada jornada = jornadaRepository.findById(jornadaId)
+                .orElseThrow(() -> new IllegalArgumentException("La jornada no existe."));
+
+        Usuario usuario = usuarioRepository.findById(usuarioId)
+                .orElseThrow(() -> new IllegalArgumentException("El usuario no existe."));
+
+        if (jornada.getPlazo() != TipoPlazo.ABIERTO) {
+            throw new IllegalStateException("El plazo de inscripción para esta jornada está cerrado.");
+        }
+
+        if (usuario.getJornadas().contains(jornada)) {
+            throw new IllegalStateException("El usuario ya se encuentra inscrito en esta jornada.");
+        }
+
+        long inscritosActuales = usuarioRepository.countByJornadasContaining(jornada);
+        if (inscritosActuales >= jornada.getMaxInscripciones()) {
+            throw new IllegalStateException("No hay plazas disponibles en esta jornada.");
+        }
+
+        usuario.getJornadas().add(jornada);
+        return usuarioRepository.save(usuario);
+    }
+
+    @Transactional
+    public Usuario darseDeBajaUsuario(int jornadaId, int usuarioId) {
+        Jornada jornada = jornadaRepository.findById(jornadaId).orElseThrow(() -> new IllegalArgumentException("La jornada no existe."));
+
+        Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() -> new IllegalArgumentException("El usuario no existe."));
+
+        if (jornada.getPlazo() != TipoPlazo.ABIERTO) {
+            throw new IllegalStateException("No es posible darse de baja con el plazo cerrado.");
+        }
+
+        if (!usuario.getJornadas().contains(jornada)) {
+            throw new IllegalStateException("El usuario no está inscrito en esta jornada.");
+        }
+
+        usuario.getJornadas().remove(jornada);
+        return usuarioRepository.save(usuario);
+    }
     
 }

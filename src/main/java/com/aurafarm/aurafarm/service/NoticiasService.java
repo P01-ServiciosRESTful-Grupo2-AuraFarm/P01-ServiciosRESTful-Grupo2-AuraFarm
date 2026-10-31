@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aurafarm.aurafarm.entity.Noticias;
 import com.aurafarm.aurafarm.repository.NoticiasRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class NoticiasService {
 	@Autowired
 	private NoticiasRepository noticiasRepository;

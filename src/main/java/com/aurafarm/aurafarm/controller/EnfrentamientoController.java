@@ -33,50 +33,53 @@ public class EnfrentamientoController {
 	private JornadaService jornadaService;
 
 	@GetMapping("/jornada/{jornadaId}")
-	public ResponseEntity<List<Enfrentamiento>> getByJornada(@PathVariable int jornadaId) {
-		if (jornadaService.obtenerPorId(jornadaId) == null) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    @Operation(summary = "Listar enfrentamientos por jornada ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista de enfrentamientos obtenida"),
+            @ApiResponse(responseCode = "404", description = "Jornada no encontrada") })
+    public ResponseEntity<List<Enfrentamiento>> getByJornada(@PathVariable int jornadaId) {
+        if (jornadaService.obtenerPorId(jornadaId) == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(enfrentamientoService.getEnfrentamientosByJornada(jornadaId));
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Buscar un enfrentamiento por ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Enfrentamiento encontrado"),
+            @ApiResponse(responseCode = "404", description = "Enfrentamiento no encontrado") })
+    public ResponseEntity<Enfrentamiento> findById(@PathVariable int id) {
+        if (enfrentamientoService.getEnfrentamientoById(id).isPresent()) {
+			return ResponseEntity.ok(enfrentamientoService.getEnfrentamientoById(id).get());
+		}else {
+			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(enfrentamientoService.getEnfrentamientosByJornada(jornadaId));
-	}
-	
-	@GetMapping("/{id}")
-	@Operation(summary = "Buscar un enfrentamiento por ID")
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Enfrentamiento encontrado"),
-			@ApiResponse(responseCode = "404", description = "Enfrentamiento no encontrado") })
-	public ResponseEntity<Enfrentamiento> findById(@PathVariable int id) {
-		Optional<Enfrentamiento> enfrentamiento = enfrentamientoService.getEnfrentamientoById(id);
-		if (enfrentamiento.isPresent()) {
-			return ResponseEntity.ok(enfrentamiento.get());
-		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-		}
-	}
-	
-	@GetMapping("/{id}/participantes")
-	@Operation(summary = "Listar los participantes de un enfrentamiento")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Lista obtenida") })
-	public ResponseEntity<List<Usuario>> getParticipantes(@PathVariable int id) {
-		return ResponseEntity.ok(enfrentamientoService.getParticipantes(id));
-	}
-	
-	@PutMapping("/{id}/resultado/{ganadorId}")
-	@Operation(summary = "Registrar el resultado de un enfrentamiento")
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Resultado registrado correctamente"),
-			@ApiResponse(responseCode = "400", description = "Enfrentamiento no pendiente o ganador no válido"),
-			@ApiResponse(responseCode = "404", description = "Enfrentamiento no encontrado") })
-	public ResponseEntity<String> registrarResultado(@PathVariable int id, @PathVariable int ganadorId) {
-		try {
-			Enfrentamiento response = enfrentamientoService.registrarResultado(id, ganadorId);
-			if (response != null) {
-				return ResponseEntity.status(HttpStatus.OK).body("Resultado registrado correctamente");
-			} else {
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Enfrentamiento no encontrado");
-			}
-		} catch (IllegalArgumentException ex) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-		}
-	}
+    }
+
+    @GetMapping("/{id}/participantes")
+    @Operation(summary = "Listar los participantes de un enfrentamiento")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista obtenida"),
+            @ApiResponse(responseCode = "404", description = "Enfrentamiento no encontrado") })
+    public ResponseEntity<List<Usuario>> getParticipantes(@PathVariable int id) {
+        if (enfrentamientoService.getEnfrentamientoById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(enfrentamientoService.getParticipantes(id));
+    }
+
+    @PutMapping("/{id}/resultado/{ganadorId}")
+    @Operation(summary = "Registrar el resultado de un enfrentamiento")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Resultado registrado correctamente"),
+            @ApiResponse(responseCode = "400", description = "Enfrentamiento no pendiente o ganador no válido"),
+            @ApiResponse(responseCode = "404", description = "Enfrentamiento no encontrado") })
+    public ResponseEntity<Enfrentamiento> registrarResultado(@PathVariable int id, @PathVariable int ganadorId) {
+        Enfrentamiento actualizado = enfrentamientoService.registrarResultado(id, ganadorId);
+        if (actualizado != null) {
+            return ResponseEntity.ok(actualizado);
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
