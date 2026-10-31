@@ -18,7 +18,7 @@ public class ActorService {
 	}
 
 	// 0 = Todo bien
-	// 1 = Es el el usuario existe
+	// 1 = Es el usuario existe
 	// 2 = Es que los datos estan repetidos
 	// idPropio sirve para poder editar sin chocar consigo mismo. Al crear se pasa -1
 	public int comprobarDatosUnicos(String email, String nombreUsuario, int idPropio) {
