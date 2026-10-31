@@ -3,7 +3,6 @@ package com.aurafarm.aurafarm.entity;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-
 @Entity
 public class Administrador extends Actor {
 
