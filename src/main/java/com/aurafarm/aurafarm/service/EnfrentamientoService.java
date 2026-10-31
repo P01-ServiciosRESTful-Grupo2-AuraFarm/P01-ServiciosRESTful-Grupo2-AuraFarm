@@ -3,6 +3,7 @@ package com.aurafarm.aurafarm.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,18 @@ public class EnfrentamientoService {
 
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	public List<Enfrentamiento> getEnfrentamientosByJornada(int jornadaId) {
+		return enfrentamientoRepository.encontrarPorJornada(jornadaId);
+	}
+
+	public Optional<Enfrentamiento> getEnfrentamientoById(int id) {
+		return enfrentamientoRepository.findById(id);
+	}
+
+	public List<Usuario> getParticipantes(int enfrentamientoId) {
+		return usuarioService.getParticipantesByEnfrentamiento(enfrentamientoId);
+	}
 	
 	@Transactional
 	public List<Enfrentamiento> generarCruces(Jornada jornada) {
@@ -71,6 +84,41 @@ public class EnfrentamientoService {
 			enfrentamientoRepository.delete(e);
 		}
 		return true;
+	}
+	
+	@Transactional
+	public Enfrentamiento registrarResultado(int enfrentamientoId, int ganadorId) {
+		Optional<Enfrentamiento> optEnfrentamiento = enfrentamientoRepository.findById(enfrentamientoId);
+		Enfrentamiento res = null;
+
+		if (optEnfrentamiento.isPresent()) {
+			Enfrentamiento enfrentamiento = optEnfrentamiento.get();
+
+			if (enfrentamiento.getEstado() != TipoEstado.PENDIENTE) {
+				throw new IllegalArgumentException("Solo se puede registrar el resultado de un enfrentamiento PENDIENTE.");
+			}
+
+			Usuario ganador = null;
+			for (Usuario u : usuarioService.getParticipantesByEnfrentamiento(enfrentamientoId)) {
+				if (u.getId() == ganadorId) {
+					ganador = u;
+				}
+			}
+			if (ganador == null) {
+				throw new IllegalArgumentException("El ganador debe ser uno de los participantes.");
+			}
+
+			if (ganador.getEnfrentamientosGanados() == null) {
+				ganador.setEnfrentamientosGanados(new ArrayList<>());
+			}
+			ganador.getEnfrentamientosGanados().add(enfrentamiento);
+			ganador.setVictorias(ganador.getVictorias() + 1);
+			usuarioService.save(ganador);
+
+			enfrentamiento.setEstado(TipoEstado.FINALIZADA);
+			res = enfrentamientoRepository.save(enfrentamiento);
+		}
+		return res;
 	}
 	
 	private void anadirEnfrentamiento(Usuario u, Enfrentamiento e) {
