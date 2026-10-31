@@ -1,6 +1,7 @@
 package com.aurafarm.aurafarm.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,9 +12,7 @@ import com.aurafarm.aurafarm.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	@Query("SELECT a.victorias FROM Usuario ORDER BY desc")
-	public Optional<List<Integer>> findByEnfrentamientosGanadosRanking();
-	@Query("SELECT a FROM Usuario a ORDER BY a.victorias desc")
-	public List<Usuario> findByEnfrentamientosGanados();
+	public Optional<List<Usuario>> findByEnfrentamientosGanadosRanking();
 	
 	@Query("SELECT u FROM Usuario u JOIN u.enfrentamientos e WHERE e.id = ?1")
 	List<Usuario> encontrarParticipantes(int enfrentamientoId);

@@ -100,7 +100,7 @@ public class UsuarioService {
 		return res;
 	}
 	
-	public Optional<List<Integer>> findByEnfrentamientosGanadosRanking(){
+	public Optional<List<Usuario>> findByEnfrentamientosGanadosRanking(){
 		return usuarioRepository.findByEnfrentamientosGanadosRanking();
 	}
 
