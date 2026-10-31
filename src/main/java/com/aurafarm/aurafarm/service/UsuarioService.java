@@ -29,12 +29,10 @@ public class UsuarioService {
 		return usuarioRepository.findAll();
 	}
 
-	// Devuelve null si el email o el nombre de usuario ya estan registrados
 	@Transactional
 	public Usuario create(Usuario u) {
 		Usuario res = null;
 		if (actorService.comprobarDatosUnicos(u.getEmail(), u.getNombreUsuario(), -1) == 0) {
-			// Un registro siempre crea un usuario nuevo y sin victorias
 			u.setId(0);
 			u.setVersion(0);
 			u.setVictorias(0);
@@ -46,7 +44,6 @@ public class UsuarioService {
 		return res;
 	}
 
-	// 0 = todo bien, 1 = el usuario no existe, 2 = datos repetidos
 	@Transactional
 	public int update(int id, Usuario datos) {
 		int res = 1;
@@ -66,7 +63,6 @@ public class UsuarioService {
 		return res;
 	}
 
-	// Al borrar el usuario se borran tambien sus inscripciones (tablas intermedias)
 	@Transactional
 	public Boolean delete(int id) {
 		boolean res = false;
@@ -77,7 +73,6 @@ public class UsuarioService {
 		return res;
 	}
 
-	// Las tres consultas devuelven null si el usuario no existe
 	public List<Jornada> findJornadas(int id) {
 		List<Jornada> res = null;
 		Optional<Usuario> usuarioOpt = findById(id);
