@@ -1,6 +1,7 @@
 package com.aurafarm.aurafarm.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,9 @@ import com.aurafarm.aurafarm.entity.Enfrentamiento;
 import com.aurafarm.aurafarm.service.EnfrentamientoService;
 import com.aurafarm.aurafarm.service.JornadaService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
@@ -32,5 +36,19 @@ public class EnfrentamientoController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 		return ResponseEntity.ok(enfrentamientoService.getEnfrentamientosByJornada(jornadaId));
+	}
+	
+	@GetMapping("/{id}")
+	@Operation(summary = "Buscar un enfrentamiento por ID")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Enfrentamiento encontrado"),
+			@ApiResponse(responseCode = "404", description = "Enfrentamiento no encontrado") })
+	public ResponseEntity<Enfrentamiento> findById(@PathVariable int id) {
+		Optional<Enfrentamiento> enfrentamiento = enfrentamientoService.getEnfrentamientoById(id);
+		if (enfrentamiento.isPresent()) {
+			return ResponseEntity.ok(enfrentamiento.get());
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
 	}
 }
