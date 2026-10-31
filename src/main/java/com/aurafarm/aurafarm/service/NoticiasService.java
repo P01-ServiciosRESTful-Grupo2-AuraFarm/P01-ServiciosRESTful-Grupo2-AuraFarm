@@ -38,6 +38,13 @@ public class NoticiasService {
 		
 	}
 	
-	public 
+	public boolean eliminar(int id) {
+		Optional<Noticias> optNoticias = noticiasRepository.findById(id);
+		if(optNoticias.isPresent()) {
+			noticiasRepository.deleteById(id);
+			return true;
+		}
+		return false;
+	}
 	
 }
