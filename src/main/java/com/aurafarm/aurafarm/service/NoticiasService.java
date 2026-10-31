@@ -1,5 +1,7 @@
 package com.aurafarm.aurafarm.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.aurafarm.aurafarm.entity.Noticias;
@@ -9,13 +11,33 @@ import jakarta.transaction.Transactional;
 
 public class NoticiasService {
 	@Autowired
-	private NoticiasRepository noticiasRpeository;
+	private NoticiasRepository noticiasRepository;
 	
 	@Transactional
 	public Noticias crear(Noticias noticia) {
-		return noticiasRpeository.save(noticia);
+		return noticiasRepository.save(noticia);
 	}
 	
-	public Noticias actualizar()
+	@Transactional
+	public Noticias actualizar(int id, Noticias noticiaActualizada) {
+		Optional<Noticias> optNoticias = noticiasRepository.findById(id);
+		
+		if (optNoticias.isPresent()) {
+			Noticias noticiasExistente = optNoticias.get();
+			
+			noticiasExistente.setTitulo(noticiaActualizada.getTitulo());
+			noticiasExistente.setVersion(noticiaActualizada.getVersion());
+			noticiasExistente.setImagen(noticiaActualizada.getImagen());
+			noticiasExistente.setContenido(noticiaActualizada.getContenido());
+			noticiasExistente.setImagen(noticiaActualizada.getImagen());
+			
+			return noticiasRepository.save(noticiasExistente);
+		}else {
+			return null;
+		}
+		
+	}
+	
+	public 
 	
 }
