@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
@@ -21,9 +22,12 @@ public class Jornada extends DomainEntity{
 	@NotNull
 	private LocalDate fecha;
 	@NotNull
+	@Schema(type = "string",format="time",example="10:00:00")
 	@JsonFormat(pattern = "HH:mm:ss")
 	private LocalTime horaInicio;
-	@NotNull
+	//He buscado esto porque hay errorer al leer datos array con el LocalTime, y esto lo coloca de manera sencilla y visiual
+	@NotNull	
+	@Schema(type = "string",format="time",example="10:00:00")
 	@JsonFormat(pattern = "HH:mm:ss")
 	private LocalTime horaFin;
 	@NotNull
