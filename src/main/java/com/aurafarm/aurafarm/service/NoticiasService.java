@@ -1,5 +1,6 @@
 package com.aurafarm.aurafarm.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class NoticiasService {
 		
 	}
 	
+	@Transactional
 	public boolean eliminar(int id) {
 		Optional<Noticias> optNoticias = noticiasRepository.findById(id);
 		if(optNoticias.isPresent()) {
@@ -45,6 +47,14 @@ public class NoticiasService {
 			return true;
 		}
 		return false;
+	}
+	
+	public Optional<Noticias> findById(int id){
+		return noticiasRepository.findById(id);
+	}
+	
+	public List<Noticias> findAll(){
+		return noticiasRepository.findAll();
 	}
 	
 }
