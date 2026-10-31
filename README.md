@@ -138,13 +138,21 @@ Item3/ — Enlace a este repositorio de GitHub con los commits del equipo.
 Item4/ — Tablero de Trello (Planificación del Jefe de Proyecto) y archivo dificultades.txt.
 
 
-##  👑 $\color{purple}{\text{La Élite de AuraFarm: \Vert{ Los Guardianes del Core (Grupo 2)} }}$
+##  👑 $\color{purple}{\text{La Élite de AuraFarm \Vert{ Los Guardianes del Core (Grupo 2)} }}$
 
 
 👑 **Dailos Hernández Reyes (Líder)** — $\color{orange}{\text{Soberano del Proyecto, Gestor de Entregables y Maestro de Inscripciones}}$
+
+
 🗡️ **Daniel González Álvarez** — $\color{yellow}{\text{Forjador del Diagrama UML y Dominador de las Jornadas}}$
+
+
 🛡️ **Miguel Ángel González Ortega** — $\color{red}{\text{Centinela de Identidades, Guardián de Actores y Custodio de Roles}}$
+
+
 🔑 **Juan Antonio Leiva Chiva** — $\color{green}{\text{Señor del Algoritmo 1v1, Motor de Enfrentamientos y Juez de Victorias}}$  
+
+
 📰 **Juan José Tejero Castro** — $\color{cyan}{\text{Heraldo de Noticias y Cronista del Ranking Supremo}}$
 
 
