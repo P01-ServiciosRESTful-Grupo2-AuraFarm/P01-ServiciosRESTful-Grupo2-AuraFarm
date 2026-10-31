@@ -3,9 +3,10 @@ package com.aurafarm.aurafarm.entity;
 import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.URL;
+import jakarta.persistence.Entity;
 
 import jakarta.validation.constraints.NotBlank;
-
+@Entity
 public class Noticias extends DomainEntity{
 	@NotBlank
 	private String titulo;
@@ -15,7 +16,6 @@ public class Noticias extends DomainEntity{
 	private LocalDate fechaPublicacion;
 	@URL
 	private String imagen;
-	
 	
 	
 	public Noticias(@NotBlank String titulo, @NotBlank String contenido, @NotBlank LocalDate fechaPublicacion,
