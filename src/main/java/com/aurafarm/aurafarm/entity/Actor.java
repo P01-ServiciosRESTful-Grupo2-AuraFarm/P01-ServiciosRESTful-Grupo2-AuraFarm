@@ -20,7 +20,6 @@ public abstract class Actor extends DomainEntity {
 	@Email
 	private String email;
 
-	// Solo se recibe en las peticiones, nunca se devuelve en las respuestas
 	@NotBlank
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String contrasena;

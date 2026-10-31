@@ -17,10 +17,6 @@ public class ActorService {
 		return actorRepository.findById(id);
 	}
 
-	// 0 = Todo bien
-	// 1 = Es el usuario existe
-	// 2 = Es que los datos estan repetidos
-	// idPropio sirve para poder editar sin chocar consigo mismo. Al crear se pasa -1
 	public int comprobarDatosUnicos(String email, String nombreUsuario, int idPropio) {
 		int res = 0;
 		Optional<Actor> porEmail = actorRepository.findByEmail(email);
@@ -33,7 +29,6 @@ public class ActorService {
 		return res;
 	}
 
-	// Devuelve null si el email no existe o la contrasena no coincide
 	public Actor login(String email, String contrasena) {
 		Optional<Actor> actorOpt = actorRepository.findByEmail(email);
 		Actor res = null;

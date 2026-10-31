@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -111,6 +112,16 @@ public class UsuarioController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} else {
 			return ResponseEntity.status(HttpStatus.OK).body(res);
+		}
+	}
+	
+	@GetMapping("/ranking")
+	public ResponseEntity<List<Usuario>> findByEnfrentamientosGanadosRanking() {
+		Optional<List<Usuario>> res = usuarioService.findByEnfrentamientosGanadosRanking();
+		if(res.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(res.get());
+		}else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 	}
 }
