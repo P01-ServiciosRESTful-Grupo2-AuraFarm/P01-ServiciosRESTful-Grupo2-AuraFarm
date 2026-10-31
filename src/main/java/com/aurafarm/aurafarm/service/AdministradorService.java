@@ -2,13 +2,12 @@ package com.aurafarm.aurafarm.service;
 
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import com.aurafarm.aurafarm.entity.Administrador;
-import com.aurafarm.aurafarm.service.AdministradorService;
 import com.aurafarm.aurafarm.repository.AdministradorRepository;
-
+@Service
 public class AdministradorService {
 	@Autowired
 	private AdministradorRepository administradorRepository;

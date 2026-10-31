@@ -17,6 +17,9 @@ public class JornadaService {
 
 	@Autowired
     private JornadaRepository jornadaRepository;
+	
+	@Autowired
+    private EnfrentamientoService enfrentamientoService;
 
     public List<Jornada> obtenerTodas() {
         return jornadaRepository.findAll();
@@ -95,11 +98,17 @@ public class JornadaService {
             Jornada jornada = optJornada.get();
             if (jornada.getPlazo() == TipoPlazo.ABIERTO) {
                 jornada.setPlazo(TipoPlazo.CERRADO);
+                enfrentamientoService.generarCruces(jornada);
             } else {
+                if (!enfrentamientoService.eliminarCruces(jornada)) {
+                    throw new IllegalStateException("No se puede reabrir: ya hay resultados registrados.");
+                }
                 jornada.setPlazo(TipoPlazo.ABIERTO);
             }
             return jornadaRepository.save(jornada);
         }
         return null;
     }
+    
+    
 }
