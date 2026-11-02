@@ -109,7 +109,7 @@ Corte Inmediato: Si un campo falla, el controlador interrumpe la ejecución e in
 ##  📂 Estructura del Entregable PSP
 
 
-Item1/ — Código fuente completo (mvn clean ejecutado antes de comprimir en .zip).
+Item1/ — Código fuente completo.
 
 
 Item2/ — Diagrama de Dominio UML en PDF.
