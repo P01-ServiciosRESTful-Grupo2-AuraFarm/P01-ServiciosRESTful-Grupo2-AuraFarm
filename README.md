@@ -85,12 +85,6 @@ En AuraFarm no hay sitio para el azar ni para la magia negra. Ejecutamos una arq
 La Ley del Dominio: Si los datos de entrada no demuestran una integridad absoluta al cruzar el umbral del sistema, la ejecución se cercena al instante con la precisión quirúrgica de un estado HTTP imperturbable.
 
 
-## 🛡️ El Estándar de Entrada (Escudo Anti-500)Validación Manual Explícita: Cero excepciones fantasma en la consola. 
-
-
-Validación Manual Explícita: Cero excepciones fantasma en la consola. Evaluamos la integridad de los datos de entrada mediante comprobaciones directas con sentencias if en el controlador antes de tocar la capa de negocio o la base de datos.
-
-
 ⚔️Control Preciso de Estados HTTP:
 
 
