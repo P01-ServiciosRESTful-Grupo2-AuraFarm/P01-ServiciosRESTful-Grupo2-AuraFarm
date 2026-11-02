@@ -60,16 +60,13 @@ Arranca el proyecto desde Eclipse. (Spring Boot creará las tablas e insertará 
 
 
 ### 📖 Documentación Interactiva (Swagger / OpenAPI) 🚀
-Para probar, auditar y documentar todos los endpoints en tiempo real sin salir del navegador (+500 de Aura), la API integra la especificación de OpenAPI 3 mediante springdoc-openapi.
+Para probar, auditar y documentar todos los endpoints en tiempo real sin salir del navegador (+500 de Aura).
 
 
 Con el servidor en ejecución (mvn spring-boot:run o desde tu IDE en puerto 8080), accede directamente a:
 
 
 🌐 Swagger UI (Interfaz Gráfica): http://localhost:8080/swagger-ui.html
-
-
-📄 OpenAPI Spec (JSON): http://localhost:8080/v3/api-docs
 
 
 💡 Nota: Desde la consola de Swagger puedes enviar peticiones en tiempo real, verificar las estructuras ResponseEntity y comprobar el comportamiento del filtro Anti-500 ante datos malformados.
