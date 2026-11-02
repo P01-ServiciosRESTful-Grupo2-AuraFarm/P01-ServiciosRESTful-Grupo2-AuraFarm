@@ -7,12 +7,12 @@ import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.URL;
 
 @Entity
 public abstract class Actor extends DomainEntity {
 	@NotBlank
+	@Size(max = 255)
 	private String nombreUsuario;
 
 	@URL
@@ -22,9 +22,11 @@ public abstract class Actor extends DomainEntity {
 
 	@NotBlank
 	@Email
+	@Size(max = 255)
 	private String email;
 
 	@NotBlank
+	@Size(max = 255)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String contrasena;
 

@@ -13,6 +13,7 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class Noticias extends DomainEntity{
 	@NotBlank
+	@Size(max = 255)
 	private String titulo;
 	@NotBlank
 	@Size(max = 2000)

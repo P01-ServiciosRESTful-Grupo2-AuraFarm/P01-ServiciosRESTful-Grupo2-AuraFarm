@@ -18,6 +18,7 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class Jornada extends DomainEntity{
 	@NotBlank
+	@Size(max = 255)
 	private String nombre;
 	@NotBlank
 	@Size(max = 2000)
