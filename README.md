@@ -61,16 +61,16 @@ Arranca el proyecto desde Eclipse. (Spring Boot creará las tablas e insertará 
 ##  🎯 Endpoints Clave
 
 
-POST /aurafarm/register — Crea tu cuenta (+100 Aura)
+POST /aurafarm/users/register — Crea tu cuenta de usuario (+100 Aura)
 
 
 GET /aurafarm/jornadas — Ver las quedadas para farmear (+50 Aura)
 
 
-POST /aurafarm/jornadas/{id} — Crear jornada (plazas pares obligatorias) (+500 Aura)
+POST /aurafarm/jornadas — Crear jornada (plazas pares obligatorias) (+500 Aura)
 
 
-PUT /aurafarm/jornadas/{id}/cambiar-plazo — Generar batallas 1v1 al azar (+1000 Aura)
+PATCH /aurafarm/jornadas/{id}/cambiar-plazo — Cerrar plazo y generar batallas 1v1 al azar (+1000 Aura)
 
 
 GET /aurafarm/users/ranking — Ver quién manda en el servidor (🗿 Infinito)
@@ -89,9 +89,6 @@ La Ley del Dominio: Si los datos de entrada no demuestran una integridad absolut
 
 
 Validación Manual Explícita: Cero excepciones fantasma en la consola. Evaluamos la integridad de los datos de entrada mediante comprobaciones directas con sentencias if en el controlador antes de tocar la capa de negocio o la base de datos.
-
-
-Respuestas Predictivas: Cero trazas de error expuestas. El cliente siempre recibe una respuesta ResponseEntity estructurada y limpia.
 
 
 ⚔️Control Preciso de Estados HTTP:
