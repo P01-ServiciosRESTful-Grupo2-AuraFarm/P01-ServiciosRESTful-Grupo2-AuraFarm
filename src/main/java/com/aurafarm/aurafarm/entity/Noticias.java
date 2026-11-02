@@ -3,19 +3,26 @@ package com.aurafarm.aurafarm.entity;
 import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.URL;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 @Entity
 public class Noticias extends DomainEntity{
 	@NotBlank
 	private String titulo;
 	@NotBlank
+	@Size(max = 2000)
+	@Column(length = 2000)
 	private String contenido;
 	@NotNull
 	private LocalDate fechaPublicacion;
 	@URL
+	@Size(max = 1000)
+	@Column(length = 1000)
 	private String imagen;
 	
 	

@@ -18,6 +18,8 @@ public class NoticiasService {
 	
 	@Transactional
 	public Noticias crear(Noticias noticia) {
+		noticia.setId(0);
+	    noticia.setVersion(0);
 		return noticiasRepository.save(noticia);
 	}
 	

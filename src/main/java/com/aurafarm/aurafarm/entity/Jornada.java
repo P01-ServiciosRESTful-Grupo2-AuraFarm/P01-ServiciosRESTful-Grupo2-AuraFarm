@@ -7,17 +7,21 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Jornada extends DomainEntity{
 	@NotBlank
 	private String nombre;
 	@NotBlank
+	@Size(max = 2000)
+	@Column(length = 2000)
 	private String descripcion;
 	@NotNull
 	private LocalDate fecha;

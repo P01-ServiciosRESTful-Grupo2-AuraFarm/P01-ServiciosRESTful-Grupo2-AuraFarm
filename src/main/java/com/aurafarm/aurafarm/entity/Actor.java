@@ -2,9 +2,12 @@ package com.aurafarm.aurafarm.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.URL;
 
 @Entity
@@ -13,6 +16,8 @@ public abstract class Actor extends DomainEntity {
 	private String nombreUsuario;
 
 	@URL
+	@Size(max = 1000)
+	@Column(length = 1000)
 	private String foto;
 
 	@NotBlank

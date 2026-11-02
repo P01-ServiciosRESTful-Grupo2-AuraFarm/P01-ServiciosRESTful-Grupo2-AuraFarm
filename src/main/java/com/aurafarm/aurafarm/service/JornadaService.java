@@ -57,6 +57,9 @@ public class JornadaService {
         if (jornada.getPlazo() == null) {
             jornada.setPlazo(TipoPlazo.ABIERTO);
         }
+        jornada.setId(0);
+        jornada.setVersion(0);
+        jornada.setEnfrentamientos(new ArrayList<>());
         return jornadaRepository.save(jornada);
     }
 
